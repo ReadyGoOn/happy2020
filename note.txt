@@ -1,3 +1,10 @@
+git 基本操作如下：
+    git init
+    git add .
+    git commit -am "备注" 
+    git remote add origin XXX（XXX就是你github或者码云等远程仓库的地址）
+    git push -u -f origin master
+
 express     入门简单，做东西极其麻烦
     回掉函数-
 koa         入门麻烦，做东西舒服
