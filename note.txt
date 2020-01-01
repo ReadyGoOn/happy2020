@@ -1,0 +1,19 @@
+express     入门简单，做东西极其麻烦
+    回掉函数-
+koa         入门麻烦，做东西舒服
+    generator/async
+    koa@1   generator
+    koa@2   generator + async   属于过渡版
+    koa@3   async
+
+1.中间件
+    express是一非破环式的框架（支持原生，自己也有方法）
+    res.end();
+    res.send();
+    读文件fs,读
+    res.sendFile()//读文件，有条件的返回
+    server.use(express.static('www/'));//读文件，有酒返回，
+2.routere
+    1.插件-补充框架功能
+    2.类似流水线（数据校验，处理）
+        重用，分工，next，顺序
