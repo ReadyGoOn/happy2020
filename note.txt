@@ -16,11 +16,25 @@ koa         入门麻烦，做东西舒服
 1.中间件
     express是一非破环式的框架（支持原生，自己也有方法）
     res.end();
-    res.send();
+    res.send(any);
     读文件fs,读
-    res.sendFile()//读文件，有条件的返回
-    server.use(express.static('www/'));//读文件，有酒返回，
+    res.sendFile(绝对路径文件名)//读文件，有条件的返回 =》server.use(express.static('www/'));//读文件，有就返回，
+    res.sendStatus(404)相当于res.writeHeader(404) + res.write('404 Not Found!') + res.end()；
+    重定向
+    res.redirect('http://www.baidu.com/')相当于 res.setHeader('location', 'http://www.baidu.com/') + res.writeHeader(301)
 2.routere
     1.插件-补充框架功能
     2.类似流水线（数据校验，处理）
         重用，分工，next，顺序
+数据交互get,post
+get => req.query
+post 
+    1.普通post => 
+        req.body(通过安装body-parser中间件)
+        server.use(body.urlencoded({extended: false}))
+    2.文件post =>
+cookie
+session
+数据库
+路由
+渲染引擎
