@@ -1,11 +1,31 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+// const queryString = require('querystring')
+// const bodys = require('./www/body')
+
+const multer = require('multer');
 
 let server = express();
 server.listen(8090);
+server.use(multer({dest: 'upload/'}).any())
 // 中间件引入，引入后才可使用。
+// 1
 server.use(bodyParser.urlencoded({extended: false}))
+// 2
+// server.use(bodys)
+// 3
+// server.use((req, res, next) =>{
+//     let arr = [];
+//     req.on('data', data =>{
+//         console.log('data', data);
+//         arr.push(data);
+//     });
+//     req.on('end', () => {
+//         req.body = queryString.parse(Buffer.concat(arr).toString());
+//         next();
+//     });
+// })
 
 server.get('/get', (req, res, next) => {
     console.log('响应方面：');
@@ -45,6 +65,7 @@ server.get('/get', (req, res, next) => {
 server.post('/formdata', (req, res, next) => {
     console.log('req.url=>', req.url);
     console.log('req.body=>', req.body);
+    console.log('req.files=>', req.files);
     res.send({a:1,b:2})
     res.end();
 });
@@ -54,4 +75,4 @@ server.use('/c', (req, res, next) => {
     res.end();
 });
 
-server.use(express.static('www/'));
+// server.use(express.static('www/'));
