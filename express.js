@@ -5,10 +5,13 @@ const bodyParser = require('body-parser');
 // const bodys = require('./www/body')
 
 const multer = require('multer');
-
+const cookieParser = require('cookie-parser')
+// 接收 req.cookies
+// 发送res.cookie('name', 'value', {options})
 let server = express();
 server.listen(8090);
 server.use(multer({dest: 'upload/'}).any())
+server.use(cookieParser({}))
 // 中间件引入，引入后才可使用。
 // 1
 server.use(bodyParser.urlencoded({extended: false}))
